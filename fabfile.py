@@ -23,6 +23,11 @@ image_src_url = 'https://oph.mdrjr.net/meveric/images/Jessie/Debian-Jessie-1.1.4
 
 # Get the image from the internet, if we do not already have it on our system
 # wwget image_src_url
+@task
+def get_image():
+    result = sudo('wget https://oph.mdrjr.net/meveric/images/Jessie/Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz')
+    return result
+
 
 # Write the OS image to the card
 # xzcat Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz | sudo dd of=/dev/mmcblk1 status='progress'
