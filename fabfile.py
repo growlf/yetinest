@@ -21,7 +21,11 @@ image_src_url = 'https://oph.mdrjr.net/meveric/images/Jessie/Debian-Jessie-1.1.4
 ################################################
 #### CARD CREATION FOR THE CLUSTER NODES
 
-# Step ONE dd the img to the sd card
+# Get the image from the internet, if we do not already have it on our system
+# wwget image_src_url
+
+# Write the OS image to the card
+# xzcat Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz | sudo dd of=/dev/mmcblk1 status='progress'
 
 # Edit the following files:
 #
