@@ -1,4 +1,4 @@
-from fabric.api import prompt
+from fabric.api import prompt, env
 
 ################################################
 #### Temp library scratchpad as we rapid-prototype this thingy-ma-bob

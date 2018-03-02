@@ -77,5 +77,9 @@ def get_image():
 
 
 ####DEBUG: Library TEST
-#from .nest import set_targetdevice
-#set_targetdevice()
+from nest import set_targetdevice
+
+@task
+def createsd():
+    set_targetdevice()
+    return True
