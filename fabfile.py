@@ -1,6 +1,7 @@
 #from fabric.api import settings, run, env, hide, fastprint
 from fabric.api import *
 from fabric.contrib.files import exists
+from nest import *
 
 
 # There are two mane processes that we will need to perform.
@@ -21,19 +22,12 @@ image_src_url = 'https://oph.mdrjr.net/meveric/images/Jessie/Debian-Jessie-1.1.4
 ################################################
 #### CARD CREATION FOR THE CLUSTER NODES
 
-# Get the image from the internet, if we do not already have it on our system
-# wwget image_src_url
+# Create a fresh OS image on an SD card for use as a generic node in a cluster
 @task
-def get_image():
-    result = local('wget https://oph.mdrjr.net/meveric/images/Jessie/Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz')
-    return result
-
-
-# Write the OS image to the card
-@task
-def img_burn():
-    result = local("xzcat Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz | sudo dd of=/dev/sdb status='progress'")
-    return result
+def mksd():
+    get_image()
+    write_image()
+    return True
 
 
 # Edit the following files:
@@ -79,11 +73,3 @@ def img_burn():
 # sudo curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 # sudo reboot
 
-
-####DEBUG: Library TEST
-from nest import set_targetdevice
-
-@task
-def createsd():
-    set_targetdevice()
-    return True
