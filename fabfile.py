@@ -34,7 +34,7 @@ def mksd():
 # Edit Network Interface files
 @task
 def edit_interfaces():
-    result = local('''source-directory /etc/network/interfaces.d\nauto eth0\nallow-hotplug eth0\niface eth0 inet static\n\taddress %s.%s\n\tnetmask 255.255.255.0\n\tgateway %s.%s\n\tdns-nameservers 8.8.8.8''' -output /etc/network/interfaces)
+    result = local(echo'''source-directory /etc/network/interfaces.d\nauto eth0\nallow-hotplug eth0\niface eth0 inet static\n\taddress %s.%s\n\tnetmask 255.255.255.0\n\tgateway %s.%s\n\tdns-nameservers 8.8.8.8''' > env.targetdevice/etc/network/interfaces)
     return result
 
 # /etc/network/interfaces
