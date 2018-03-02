@@ -12,7 +12,7 @@ swarm_basename = 'nest'
 swarm_masterhost = 'master'
 swarm_workernode = 'worker'
 swarm_storage = 'datastore'
-swarm_net '10.7.7.0'
+swarm_net = '10.7.7.0'
 swarm_count = 5
 
 image_src_url = 'https://oph.mdrjr.net/meveric/images/Jessie/Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz'
@@ -74,3 +74,8 @@ def get_image():
 # sudo chmod +x /usr/local/bin/docker-compose
 # sudo curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 # sudo reboot
+
+
+####DEBUG: Library TEST
+#from .nest import set_targetdevice
+#set_targetdevice()
