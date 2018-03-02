@@ -30,7 +30,7 @@ def get_image():
 
 
 # Write the OS image to the card
-# xzcat Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz | sudo dd of=/dev/mmcblk1 status='progress'
+# xzcat Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz | sudo dd of=/dev/sdb status='progress'
 
 # Edit the following files:
 #
