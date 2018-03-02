@@ -33,6 +33,7 @@ def get_image():
 @task
 def img_burn():
     result = local("xzcat Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz | sudo dd of=/dev/sdb status='progress'")
+    return result
 
 
 # Edit the following files:
