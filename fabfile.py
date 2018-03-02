@@ -14,6 +14,7 @@ swarm_masterhost = 'master'
 swarm_workernode = 'worker'
 swarm_storage = 'datastore'
 swarm_net = '10.7.7.0'
+swarm_address_start = 11
 swarm_count = 5
 
 image_src_url = 'https://oph.mdrjr.net/meveric/images/Jessie/Debian-Jessie-1.1.4-20171121-XU3+XU4.img.xz'
@@ -30,19 +31,23 @@ def mksd():
     return True
 
 
-# Edit the following files:
-#
+# Edit Network Interface files
+@task
+def edit_interfaces():
+    result = local = '''source-directory /etc/network/interfaces.d\nauto eth0\nallow-hotplug eth0\niface eth0 inet static\n\taddress %s.%s\n\tnetmask 255.255.255.0\n\tgateway %s.%s\n\tdns-nameservers 8.8.8.8'''
+    return result
+
 # /etc/network/interfaces
 # --------
-# interfaces(5) file used by ifup(8) and ifdown(8)
-# Include files from /etc/network/interfaces.d:
+# #interfaces(5) file used by ifup(8) and ifdown(8)
+# #Include files from /etc/network/interfaces.d:
 #
 #    source-directory /etc/network/interfaces.d
 #
 #    auto eth0
 #    allow-hotplug eth0
 #    iface eth0 inet static
-#      address 172.16.28.50
+#      address %s.%s
 #      netmask 255.255.255.0
 #      gateway 172.16.28.1
 #      dns-nameservers 8.8.8.8
